@@ -14,22 +14,15 @@ export default function Merch() {
 
       <main className="merch-container">
         <div className="merch-note">
-          <strong>Note:</strong> If the store prevents embedding, follow the README to wire a headless integration.
+          <strong>Shop WavyGoods Collection</strong> — Browse exclusive merchandise and apparel
         </div>
 
         <iframe
           title="WavyGoods Store"
           src={storeUrl}
           className="merch-iframe"
-          sandbox="allow-forms allow-popups allow-scripts allow-same-origin"
+          sandbox="allow-forms allow-popups allow-scripts allow-same-origin allow-top-navigation"
         />
-
-        <div className="api-alternative">
-          <h3>Better option: Headless integration</h3>
-          <p>
-            Use Shopify Storefront API / Buy Button or the store's REST API to fetch products and render them natively for a faster, UX-friendly experience.
-          </p>
-        </div>
       </main>
 
       <footer className="footer">© {new Date().getFullYear()} WavyGoods</footer>

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   return (
@@ -13,24 +14,36 @@ export default function Home() {
 
       {/* Horizontal scroll container */}
       <main className="h-scroll" role="main" aria-label="Horizontal sections">
-        <section className="panel">
-          <h1>Welcome — WaveGodMaxB</h1>
-          <p>Dark, dynamic, side-scrolling landing panel.</p>
+        <section className="panel hero">
+          <img src="https://wavegodmaxb.com/hero.jpg" alt="WaveGod Hero" className="panel-image" />
+          <div className="panel-overlay">
+            <h1>Welcome — WaveGodMaxB</h1>
+            <p>Dark, dynamic, side-scrolling landing experience</p>
+          </div>
         </section>
 
-        <section className="panel alt">
-          <h2>About</h2>
-          <p>Use this panel to show biography, links, media, etc.</p>
+        <section className="panel about">
+          <img src="https://wavegodmaxb.com/about.jpg" alt="About" className="panel-image" />
+          <div className="panel-overlay">
+            <h2>About</h2>
+            <p>Explore the creative vision and story behind WaveGod</p>
+          </div>
         </section>
 
-        <section className="panel alt2">
-          <h2>Gallery / Media</h2>
-          <p>Embed videos, audio, or a dynamic grid here.</p>
+        <section className="panel gallery">
+          <img src="https://wavegodmaxb.com/gallery.jpg" alt="Gallery" className="panel-image" />
+          <div className="panel-overlay">
+            <h2>Gallery / Media</h2>
+            <p>Curated collection of visuals, videos, and creative work</p>
+          </div>
         </section>
 
         <section className="panel merch-preview">
-          <h2>Merch Preview</h2>
-          <p>Tap Merch to go to the full store page.</p>
+          <img src="https://wavegodmaxb.com/merch.jpg" alt="Merch" className="panel-image" />
+          <div className="panel-overlay">
+            <h2>Exclusive Merch</h2>
+            <p>Tap Merch to explore WavyGoods collection</p>
+          </div>
         </section>
       </main>
 

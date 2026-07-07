@@ -14,9 +14,11 @@ body{background:linear-gradient(180deg,#07080a 0%, #0b0f12 100%);color:var(--tex
 .topbar{
   position:fixed;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:transparent;z-index:30;
   backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
-.topbar .brand{font-weight:700;color:var(--accent)}
-.topbar nav a{color:var(--muted);margin-left:18px;text-decoration:none}
+.topbar .brand{font-weight:700;color:var(--accent);font-size:18px}
+.topbar nav a{color:var(--muted);margin-left:24px;text-decoration:none;transition:color 0.2s}
+.topbar nav a:hover{color:var(--accent)}
 
 /* Horizontal scroll container */
 .h-scroll{
@@ -30,34 +32,126 @@ body{background:linear-gradient(180deg,#07080a 0%, #0b0f12 100%);color:var(--tex
   scroll-behavior:smooth;
   padding-top:64px;
 }
-.h-scroll::-webkit-scrollbar{height:10px}
-.h-scroll::-webkit-scrollbar-thumb{background:#1f2933;border-radius:999px}
+.h-scroll::-webkit-scrollbar{height:8px}
+.h-scroll::-webkit-scrollbar-track{background:rgba(0,0,0,0.3)}
+.h-scroll::-webkit-scrollbar-thumb{background:#1f2933;border-radius:4px}
+.h-scroll::-webkit-scrollbar-thumb:hover{background:#2a3540}
 
-/* Panels take full viewport width */
+/* Panels with background images */
 .panel{
   flex:0 0 100vw;
   height:calc(100vh - 64px);
   scroll-snap-align:center;
   display:flex;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-end;
   align-items:flex-start;
   padding:56px;
-  background:var(--panel);
-  border-right:1px solid rgba(255,255,255,0.02);
+  position:relative;
+  overflow:hidden;
+  background:#0b0f12;
 }
-.panel h1,h2{margin:0 0 12px 0}
-.panel p{margin:0;color:var(--muted);max-width:60ch}
 
-/* Alternating styles */
-.panel.alt{background:#0b1116}
-.panel.alt2{background:#071014}
-.panel.merch-preview{background:linear-gradient(90deg,#071018,#08121a)}
+.panel-image{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
+  opacity:0.7;
+}
 
-.footer{position:fixed;bottom:12px;left:20px;color:var(--muted);font-size:13px}
+.panel-overlay{
+  position:relative;
+  z-index:2;
+  background:linear-gradient(180deg,transparent 0%,rgba(11,15,18,0.9) 60%);
+  padding:40px;
+  border-radius:8px;
+}
+
+.panel h1,.panel h2{
+  margin:0 0 16px 0;
+  font-size:32px;
+  font-weight:700;
+}
+
+.panel p{
+  margin:0;
+  color:var(--muted);
+  max-width:60ch;
+  font-size:16px;
+  line-height:1.5;
+}
+
+.panel.hero .panel-overlay{
+  background:linear-gradient(180deg,transparent 0%,rgba(11,15,18,0.95) 50%);
+}
+
+.panel.hero h1{
+  font-size:48px;
+  color:var(--accent);
+}
+
+.footer{
+  position:fixed;
+  bottom:16px;
+  left:20px;
+  color:var(--muted);
+  font-size:12px;
+  z-index:20;
+}
 
 /* Merch page */
-.merch-page .merch-container{padding-top:64px;height:calc(100vh - 64px);display:flex;flex-direction:column}
-.merch-note{padding:14px;color:var(--muted);background:rgba(255,255,255,0.02);margin:12px;border-radius:8px;max-width:1100px}
-.merch-iframe{flex:1;border:0;width:100%;min-height:60vh;background:#fff;margin-top:12px}
-.api-alternative{padding:18px;color:var(--muted);max-width:1100px}
+.merch-page{
+  overflow:auto;
+}
+
+.merch-page .merch-container{
+  padding-top:80px;
+  padding-bottom:40px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+.merch-note{
+  padding:16px 20px;
+  color:var(--text);
+  background:rgba(0,212,255,0.1);
+  border-left:3px solid var(--accent);
+  margin:0 20px 20px 20px;
+  border-radius:4px;
+  font-size:14px;
+}
+
+.merch-iframe{
+  flex:1;
+  border:none;
+  width:100%;
+  min-height:600px;
+  margin:0 20px;
+  border-radius:8px;
+  background:#fff;
+}
+
+/* Responsive */
+@media (max-width:640px){
+  .panel{
+    padding:32px;
+  }
+  .panel h1,.panel h2{
+    font-size:24px;
+  }
+  .panel-overlay{
+    padding:24px;
+  }
+  .topbar{
+    height:56px;
+    padding:0 16px;
+  }
+  .topbar nav a{
+    margin-left:16px;
+  }
+}
